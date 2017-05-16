@@ -1,0 +1,49 @@
+<!docytype html>
+<html>
+
+<head>
+    <link href='Styles.css' rel="stylesheet" type="text/css" />
+    <title>PINGPONG</title>
+	<p id="Text">Please click on the board to start the game</p>
+	<p id="Time"></p>
+
+</head>
+
+<body>
+<canvas id="mycanvas" width = "500" height = "800"onmousemove="paddleOnMouse(event)"onclick="start()">You will see this if canvas is not supported</canvas>
+</body>
+<script src ="app/rect.js"></script>
+<script src ="app/ball.js"></script>
+<script src ="app/pad.js"></script>
+<script>
+canvas = document.getElementById("mycanvas");
+var context = canvas.getContext('2d');
+var w = canvas.width;
+var h = canvas.height;
+var border = 10;
+var myVar;
+gameBoard();
+pad = new Paddle();
+
+var timer_B= new Date().getTime();
+
+function mytimer()
+	{
+	var timer_E= new Date().getTime();
+	document.getElementById("Time").innerHTML ="The elapsed time:"+(timer_E-timer_B)/1000+"s";
+	}
+	
+
+
+var start = function()
+{	
+	myVar = setInterval('mytimer()',1000);
+	document.getElementById("Text").innerHTML= "GAME STARTING";
+	pingpong(context);
+}
+
+</script>
+
+
+</html>
+
